@@ -1,20 +1,21 @@
 require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
+// server.js (Backend)
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());             // Enable CORS for all routes
+app.use(express.json());     // Parse JSON bodies
+const flightRoutes = require('./routes/flightRoutes');
 
-// Middleware
-app.use(express.json());
-app.use(cors());
-app.use(morgan("dev"));
 
-// Default Route
-app.get("/", (req, res) => {
-    res.send("API is running...");
-});
+let flights = [
+  { id: 1, origin: 'New York', destination: 'Paris', price: 450 },
+];
 
-// Start Server
-const PORT = process.env.PORT || 5000;
+app.use('/api/flights', flightRoutes);
+
+
+// Start the server
+const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
