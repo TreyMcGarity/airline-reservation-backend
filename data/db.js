@@ -1,4 +1,16 @@
 const knex = require('knex');
-const config = require('../knexfile').development;
+require('dotenv').config();
 
-module.exports = knex(config);
+const config = {
+  client: 'pg',
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: process.env.DATABASE_URL.includes('render') ? { rejectUnauthorized: false } : false,
+  },
+};
+
+// const config = require('../knexfile').development;
+
+const db = knex(config);
+
+module.exports = db;
