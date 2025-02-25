@@ -79,7 +79,7 @@ const deleteFlight = async (req, res) => {
 const searchFlights = async (req, res) => {
     // Extract query parameters sent from the frontend
     const { origin, destination, departure_date } = req.query;
-    
+    console.log(origin, destination, departure_date)
     // Ensure we have the essential parameters (origin and destination)
     if (!origin || !destination || !departure_date) {
       return res.status(400).json({
@@ -95,12 +95,12 @@ const searchFlights = async (req, res) => {
         .where('origin', origin)
         .andWhere('destination', destination)
         // Filter by departure_date: cast the departure_time timestamp to a date and compare it
-        .andWhere('departure_time', '>', new Date())
+        // .andWhere('departure_time', '>', new Date())
         .orderBy('departure_time', 'asc');
   
       // Execute the query
       const flights = await query;
-      
+      console.log("flights", flights)
       // Return the filtered list of flights as JSON
       res.status(200).json(flights);
     } catch (error) {
