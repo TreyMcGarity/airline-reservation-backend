@@ -75,38 +75,4 @@ const deleteFlight = async (req, res) => {
   }
 };
 
-// searchFlights endpoint to handle filtering flights based on search criteria
-const searchFlights = async (req, res) => {
-    // Extract query parameters sent from the frontend
-    const { origin, destination, departure_date } = req.query;
-    console.log(origin, destination, departure_date)
-    // Ensure we have the essential parameters (origin and destination)
-    if (!origin || !destination || !departure_date) {
-      return res.status(400).json({
-        message: 'Missing required query parameters. Please include origin, destination, and departure_date (YYYY-MM-DD).'
-      });
-    }
-  
-    try {
-      // Build the base query using the flights table
-      let query = db('flights')
-        .select('*')
-        // Filter by origin and destination codes (the API should receive these as airport codes)
-        .where('origin', origin)
-        .andWhere('destination', destination)
-        // Filter by departure_date: cast the departure_time timestamp to a date and compare it
-        // .andWhere('departure_time', '>', new Date())
-        .orderBy('departure_time', 'asc');
-  
-      // Execute the query
-      const flights = await query;
-      console.log("flights", flights)
-      // Return the filtered list of flights as JSON
-      res.status(200).json(flights);
-    } catch (error) {
-      console.error("Error searching flights:", error);
-      res.status(500).json({ message: 'Error searching flights', error: error.message });
-    }
-  };
-
-module.exports = { getAllFlights, getFlightById, addFlight, updateFlight, deleteFlight, searchFlights };
+module.exports = { getAllFlights, getFlightById, addFlight, updateFlight, deleteFlight };
