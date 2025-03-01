@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { getAllCustomers, getCustomerById, addCustomer, updateCustomer, deleteCustomer } = require('../../controllers/customerController');
+const { getAllCustomers, getCustomerById, addCustomer, updateCustomer, deleteCustomer,loggedInCustomer } = require('../../controllers/customerController');
+const authMiddleware = require('../../controllers/middleware/AuthMiddleware'); // Middleware to authenticate user
+
+// Get loggedIn customer
+router.get('/me', authMiddleware, loggedInCustomer); // Route for fetching logged-in customer details
 
 // GET endpoint
 router.get('/', getAllCustomers);
@@ -16,6 +20,7 @@ router.put('/:id', updateCustomer);
 
 // DELETE a customer by ID
 router.delete('/:id', deleteCustomer);
+
 
 
 
