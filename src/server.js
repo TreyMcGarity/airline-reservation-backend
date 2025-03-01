@@ -5,9 +5,13 @@ const cors = require('cors');
 const app = express();
 app.use(cors());             // Enable CORS for all routes
 app.use(express.json());     // Parse JSON bodies
-const flightRoutes = require('./routes/flightRoutes');
+const flightRouter = require('./routes/flightRouter');
+const customerRouter = require('./routes/customerRouter');
 
-app.use('/api/flights', flightRoutes);
+
+app.use('/api/flights', flightRouter);
+app.use('/api/customers', customerRouter);
+
 
 
 // Start the server
