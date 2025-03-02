@@ -30,7 +30,7 @@ const Register = async (req, res) => {
             .returning(['id', 'first_name', 'last_name', 'email']);
 
         // Generate JWT token
-        const token = jwt.sign({ id: newUser.id, email: newUser.email }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: newUser.id, email: newUser.email }, JWT_SECRET, { expiresIn: '24h' });
 
         res.status(201).json({ message: 'Registration successful', user: newUser, token });
     } catch (error) {
@@ -64,7 +64,7 @@ const Login = async (req, res) => {
         // Generate JWT token
         const token = jwt.sign(
             { id: userId, email: user.email },
-            process.env.JWT_SECRET,
+            JWT_SECRET,
             { expiresIn: "24h" }
         );
 
