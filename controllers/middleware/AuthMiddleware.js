@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 
+const JWT_SECRET = process.env.JWT_SECRET || "wubbalubbadubdub";
+
 const authMiddleware = (req, res, next) => {
     const token = req.headers.authorization; // Extract token
     console.log("called token:",token)
@@ -9,7 +11,7 @@ const authMiddleware = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);
         console.log("Decoded JWT Payload:", decoded); // Debugging step
 
         if (!decoded.id) {
