@@ -3,31 +3,30 @@ This project is an Airline Reservation System built using Node.js, Express.js, K
 
 
 
+
 Features
 
-Flight Search: Customers can search for flights by origin, destination, and date.
+ - Flight Search: Customers can search for flights by origin, destination, and date.
 
-Booking System: Users can reserve flights after selecting a preferred option.
+ - Booking System: Users can reserve flights after selecting a preferred option.
 
-User Authentication: Secure login and session management.
+ - User Authentication: Secure login and session management.
 
-Payment Processing: Mock payment system with the ability to save payment details.
+ - Payment Processing: Mock payment system with the ability to save payment details.
 
-Reservation Management: Users can view and cancel reservations from a secure dashboard.
+ - Reservation Management: Users can view and cancel reservations from a secure dashboard.
 
 
 
-Technologies Used
+Technologies Used:
 
-Backend: Node.js, Express.js
+API: Node.js, Express.js
 
 Database: PostgreSQL, Knex.js
 
-Authentication: 
+Authentication: JWT
 
-Payment (Mocked): 
-
-
+Payment: 
 
 Folder Structure
 
