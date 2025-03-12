@@ -154,4 +154,46 @@ const getCustomerBookings = async (req, res) => {
     }
 };
 
-module.exports = { getAllBookings, getBookingById, updateBooking, deleteBooking, reserveFlight, getCustomerBookings };
+const updatePaymentStatus = async (req, res) => {
+    console.log(req.params.id, 'and ', req.body.status)
+    const id = parseInt(req.params.id, 10);
+    const updatedStatus = req.body.status;
+
+    // Validate input
+    if (!updatedStatus) {
+        return res.status(400).json({ error: "Status is required to update booking." });
+    }
+
+    const existingBooking = await db('bookings')
+    .where({ id })
+    .select('status')
+    .first();
+
+    // Also Check if booking exists
+    if (!existingBooking) {
+    return res.status(404).json({ message: 'Booking not found' });
+    }
+
+    // Also Check if status is already "Paid"
+    if (existingBooking.status === "Paid") {
+    return res.status(200).json({ message: "Booking is already marked as Paid" });
+    }
+
+    try {
+        const result = await db('bookings')
+            .where({ id })
+            .update({ status: updatedStatus })
+            .returning('*')
+
+        if (result.length) {
+            res.status(200).json({ message: 'Booking status updated successfully'});
+        } else {
+            res.status(404).json({ message: 'Booking not found' });
+        }
+    } catch (error) {
+            console.error("Update error details:", error); // Log the full error
+            res.status(500).json({ error: "Error updating booking status", details: error.message });
+    }
+};
+
+module.exports = { getAllBookings, getBookingById, updateBooking, deleteBooking, reserveFlight, getCustomerBookings, updatePaymentStatus};
