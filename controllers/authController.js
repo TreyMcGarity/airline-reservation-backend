@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const db = require('../data/db');
 
-const JWT_SECRET = process.env.JWT_SECRET || "wubbalubbadubdub";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register a new user
 const Register = async (req, res) => {
