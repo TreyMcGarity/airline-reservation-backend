@@ -1,4 +1,4 @@
-Airline Reservation System
+I'm Airline Reservation System
 This project is an Airline Reservation System built using Node.js, Express.js, Knex.js, and PostgreSQL. It allows customers to search for flights, book reservations, manage bookings, and make payments securely.
 
 
@@ -47,7 +47,8 @@ Implement real payment gateway
 
 Add real-time flight status updates
 
-Improve UI with a frontend framework (React, Vue, etc.)
+Improve UI with a frontend framework (React, styled components, Redux, etc.)
+airline-reservation-frontend
 
 Multi-language support
 
