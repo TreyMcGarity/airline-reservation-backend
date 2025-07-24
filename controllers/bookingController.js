@@ -76,8 +76,8 @@ const reserveFlight = async (req, res) => {
         const { flight_id } = req.body;
         const customer_id = req.user.id; 
 
-        console.log("Booking Debug - Customer ID:", customer_id);
-        console.log("Booking Debug - Flight ID:", flight_id);
+        // console.log("Booking Debug - Customer ID:", customer_id);
+        // console.log("Booking Debug - Flight ID:", flight_id);
 
         if (!customer_id) {
             return res.status(401).json({ error: "Unauthorized: Invalid user." });
@@ -89,7 +89,7 @@ const reserveFlight = async (req, res) => {
             console.log("Flight not found in DB:", flight_id);
             return res.status(404).json({ error: "Flight not found." });
         }
-        console.log("Flight found:", flight);
+        // console.log("Flight found:", flight);
 
         // Prevent duplicate bookings
         const existingBooking = await db("bookings")
@@ -106,7 +106,7 @@ const reserveFlight = async (req, res) => {
             .insert({ customer_id, flight_id, status: "pending" })
             .returning(["id", "customer_id", "flight_id", "status", "created_at"]);
 
-        console.log("Booking successfully created:", booking);
+        // console.log("Booking successfully created:", booking);
 
         res.status(201).json({ 
             message: "Flight booked successfully", 
@@ -140,7 +140,7 @@ const getCustomerBookings = async (req, res) => {
                 "bookings.created_at"
             );
 
-        console.log("Found Bookings:", bookings);
+        // console.log("Found Bookings:", bookings);
 
         if (bookings.length === 0) {
             return res.status(404).json({ message: "No bookings found for this customer." });

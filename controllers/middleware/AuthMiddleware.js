@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
-        console.log("Decoded JWT Payload:", decoded); // Debugging step
+        // console.log("Decoded JWT Payload:", decoded); // Debugging step
 
         if (!decoded.id) {
             return res.status(400).json({ message: "Invalid token: Missing user ID" });
