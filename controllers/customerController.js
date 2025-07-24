@@ -77,7 +77,7 @@ const deleteCustomer = async (req, res) => {
 
 const loggedInCustomer = async (req, res) => {
     try {
-        console.log("Decoded User Object in /me:", req.user); // Debugging step
+        // console.log("Decoded User Object in /me:", req.user); // Debugging step
 
         if (!req.user || !req.user.id) {
             return res.status(401).json({ message: "Unauthorized: No user logged in", user: req.user });
