@@ -4,7 +4,7 @@ const db = require('../data/db');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
-  console.warn('⚠️  JWT_SECRET is not set; tokens cannot be verified across restarts.');
+  console.warn('JWT_SECRET is not set; tokens cannot be verified across restarts.');
 }
 
 const ROLE_TABLE = {
