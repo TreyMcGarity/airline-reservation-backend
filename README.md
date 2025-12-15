@@ -56,8 +56,3 @@ Commit changes (git commit -m 'Add feature XYZ')
 Push to branch (git push origin feature-name)
 
 Open a Pull Request
-
-
-License
-
-This project is licensed under the MIT License.
