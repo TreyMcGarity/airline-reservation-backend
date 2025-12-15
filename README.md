@@ -1,10 +1,8 @@
+
 I'm Airline Reservation System
 This project is an Airline Reservation System built using Node.js, Express.js, Knex.js, and PostgreSQL. It allows customers to search for flights, book reservations, manage bookings, and make payments securely.
 
-
-
-
-Features
+## Features
 
  - Flight Search: Customers can search for flights by origin, destination, and date.
 
@@ -12,13 +10,13 @@ Features
 
  - User Authentication: Secure login and session management.
 
- - Payment Processing: Mock payment system with the ability to save payment details.
+ - Payment Processing: Stripe payment system with the ability to save payment details.
 
- - Reservation Management: Users can view and cancel reservations from a secure dashboard.
+ - Reservation Management: Users can view and send "cancel reservations" to agent from a secure dashboard.
 
 
 
-Technologies Used:
+## Technologies Used:
 
 API: Node.js, Express.js
 
@@ -26,9 +24,9 @@ Database: PostgreSQL, Knex.js
 
 Authentication: JWT
 
-Payment: 
+Payment: Stripe (via Frontend)
 
-Folder Structure
+## Folder Structure
 
 /airline-reservation
 |-- /migrations  # Knex migrations for database schema
@@ -41,21 +39,13 @@ Folder Structure
 |-- package.json # Dependencies and scripts
 
 
-Future Enhancements
-
-Implement real payment gateway 
+## Future Enhancements
 
 Add real-time flight status updates
 
-Improve UI with a frontend framework (React, styled components, Redux, etc.)
-airline-reservation-frontend
-
-Multi-language support
-
-Agent Dashboard
 
 
-Contributing
+## Contributing
 
 Fork the repository
 
@@ -66,8 +56,3 @@ Commit changes (git commit -m 'Add feature XYZ')
 Push to branch (git push origin feature-name)
 
 Open a Pull Request
-
-
-License
-
-This project is licensed under the MIT License.
