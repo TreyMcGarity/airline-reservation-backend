@@ -43,8 +43,6 @@ Payment: Stripe (via Frontend)
 
 Add real-time flight status updates
 
-
-
 ## Contributing
 
 Fork the repository
